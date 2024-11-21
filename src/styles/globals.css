@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-stock-light {
+  -webkit-text-stroke: 0.2px rgb(224, 223, 223);
+}
+
+.text-stock-dark {
+  -webkit-text-stroke: 0.5px rgb(5, 5, 5);
+}
