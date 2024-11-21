@@ -1,13 +1,14 @@
-import { Navbar } from "@/src/components/navbar";
 import React from "react";
+
+import { Navbar } from "@/src/components/navbar";
 
 const Home = () => {
   return (
     <>
-      <Navbar />
-      <main className="flex flex-col relative min-h-screen">
-        
-      </main>
+      <div className="bg-blue-50 ">
+        <Navbar />
+        <main className="flex flex-col relative min-h-screen" />
+      </div>
     </>
   );
 };

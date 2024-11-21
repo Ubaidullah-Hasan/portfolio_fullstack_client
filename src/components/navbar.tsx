@@ -1,3 +1,4 @@
+"use client"
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -13,14 +14,39 @@ import { link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
 import { PiHandshake } from "react-icons/pi";
+import { useEffect, useState } from "react";
 
 import { siteConfig } from "@/src/config/site";
 import { ThemeSwitch } from "@/src/components/theme-switch";
 import { TwitterIcon, GithubIcon, DiscordIcon } from "@/src/components/icons";
 
 export const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    console.log(scrollY);
+    const handleScrolled = () => {
+      if (window.scrollY >= 100) {
+        setIsScrolled(true);
+      } else if (window.scrollY <= 80) {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScrolled);
+
+    return () => {
+      window.removeEventListener("scroll", handleScrolled);
+    };
+  }, []);
+
+
   return (
-    <NextUINavbar maxWidth="xl" position="sticky">
+    <NextUINavbar
+      className={`${isScrolled ? "h-[80px]" : "h-[100px]"} duration-200 bg-transparent  border-b`}
+      maxWidth="xl"
+      position={isScrolled ? "sticky" : "static"}
+    >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         {/* logo start */}
         <NavbarBrand as="li" className="gap-3 max-w-fit">
@@ -31,15 +57,17 @@ export const Navbar = () => {
           </NextLink>
         </NavbarBrand>
         {/* logo end */}
+      </NavbarContent>
 
+      <NavbarContent className="basis-1/5 sm:basis-full" justify="center">
         {/* large (1024px +) menu start */}
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
+        <ul className="hidden lg:flex gap-6 justify-start ml-2 ">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-blue-500 data-[active=true]:font-bold font-semibold",
                 )}
                 color="foreground"
                 href={item.href}
@@ -67,12 +95,17 @@ export const Navbar = () => {
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem className="hidden md:flex">
+        <NavbarItem className="hidden md:flex ">
           <Button
             isExternal
             as={Link}
-            className="text-sm font-normal border border-default-900 rounded-xl bg-transparent"
-            endContent={<PiHandshake className="text-default-900" />}
+            className="text-sm border border-black rounded-xl bg-transparent font-bold hover:bg-blue-800 text-black hover:text-white"
+            endContent={
+              <PiHandshake
+                className="duration-100 hover:text-white"
+                size={20}
+              />
+            }
             href={siteConfig.links.sponsor}
             variant="flat"
           >

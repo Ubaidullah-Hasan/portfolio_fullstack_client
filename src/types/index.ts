@@ -6,4 +6,4 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 
 export type TChildren = {
   children: ReactNode;
-}
+};
