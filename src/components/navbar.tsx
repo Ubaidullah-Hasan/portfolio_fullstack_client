@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -18,13 +18,24 @@ import { useEffect, useState } from "react";
 
 import { siteConfig } from "@/src/config/site";
 import { ThemeSwitch } from "@/src/components/theme-switch";
-import { TwitterIcon, GithubIcon, DiscordIcon } from "@/src/components/icons";
+import { GithubIcon } from "@/src/components/icons";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // handle scrolling behavior and navigation to another sections
+  const handleScroll = (id: string) => {
+    const section = document.getElementById(id);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        // block: "center", // Align section to the middle of the viewport
+      });
+    }
+  };
+
   useEffect(() => {
-    console.log(scrollY);
     const handleScrolled = () => {
       if (window.scrollY >= 100) {
         setIsScrolled(true);
@@ -40,10 +51,41 @@ export const Navbar = () => {
     };
   }, []);
 
+  // to show menu active items styles
+  const [activeSection, setActiveSection] = useState("");
+
+  const handleScrollSpy = () => {
+    const sections = siteConfig.navItems.map((item) =>
+      document.getElementById(item.href.replace("#", "")),
+    );
+    const scrollPosition = window.scrollY;
+
+    sections.forEach((section) => {
+      if (section) {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          setActiveSection(section.id);
+        }
+      }
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScrollSpy);
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollSpy);
+    };
+  }, []);
 
   return (
     <NextUINavbar
-      className={`${isScrolled ? "h-[80px]" : "h-[100px]"} duration-200 bg-transparent  border-b`}
+      className={`${isScrolled ? "h-[80px] backdrop-blur-md " : "h-[100px]"} duration-200 bg-transparent border-b`}
       maxWidth="xl"
       position={isScrolled ? "sticky" : "static"}
     >
@@ -64,16 +106,17 @@ export const Navbar = () => {
         <ul className="hidden lg:flex gap-6 justify-start ml-2 ">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
-              <NextLink
+              <button
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-blue-500 data-[active=true]:font-bold font-semibold",
+                  activeSection === item.href.replace("#", "")
+                    ? "text-blue-500 font-bold"
+                    : "data-[active=true]:text-blue-500 data-[active=true]:font-bold font-semibold",
                 )}
-                color="foreground"
-                href={item.href}
+                onClick={() => handleScroll(item.href.replace("#", ""))} // Remove '#' for id
               >
                 {item.label}
-              </NextLink>
+              </button>
             </NavbarItem>
           ))}
         </ul>
@@ -83,18 +126,6 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
-            <TwitterIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Discord" href={siteConfig.links.discord}>
-            <DiscordIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500" />
-          </Link>
-          <ThemeSwitch />
-        </NavbarItem>
         <NavbarItem className="hidden md:flex ">
           <Button
             isExternal

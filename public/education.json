@@ -1,0 +1,61 @@
+{
+    "education": [
+        {
+            "degree": "Bachelor of Science in Computer Science",
+            "institution": "ABC University",
+            "startDate": "2013-09-01",
+            "endDate": "2017-06-15",
+            "gpa": 3.8,
+            "major": "Computer Science",
+            "minor": "Mathematics",
+            "courses": [
+                "Data Structures and Algorithms",
+                "Operating Systems",
+                "Software Engineering",
+                "Artificial Intelligence"
+            ],
+            "achievements": [
+                "Dean's List 2015-2017",
+                "Graduated with honors"
+            ]
+        },
+        {
+            "degree": "Master of Science in Software Engineering",
+            "institution": "XYZ University",
+            "startDate": "2018-09-01",
+            "endDate": "2020-06-10",
+            "gpa": 4.0,
+            "major": "Software Engineering",
+            "minor": "Data Science",
+            "courses": [
+                "Advanced Software Engineering",
+                "Machine Learning",
+                "Cloud Computing",
+                "Big Data Analytics"
+            ],
+            "achievements": [
+                "Graduate Research Assistant",
+                "Published paper on Machine Learning"
+            ]
+        },
+        {
+            "degree": "PhD in Artificial Intelligence",
+            "institution": "Tech University",
+            "startDate": "2021-09-01",
+            "endDate": "2025-06-30",
+            "gpa": 4.0,
+            "major": "Artificial Intelligence",
+            "minor": "Robotics",
+            "courses": [
+                "Deep Learning",
+                "Robotics and Automation",
+                "Computer Vision",
+                "Natural Language Processing"
+            ],
+            "achievements": [
+                "Research on AI for autonomous vehicles",
+                "Published paper on Neural Networks"
+            ]
+        }
+    ]
+}

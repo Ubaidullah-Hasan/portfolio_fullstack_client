@@ -10,9 +10,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)"],
+        sans: ['Poppins', 'ui-sans-serif', 'system-ui'],
         mono: ["var(--font-mono)"],
       },
+      animation: {
+        spin: 'spin 1.5s linear infinite', // Custom spin animation
+      },
+      
     },
   },
   darkMode: "class",

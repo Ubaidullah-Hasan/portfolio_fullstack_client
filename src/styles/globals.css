@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+  scroll-behavior: smooth;
+}
+
 .text-stock-light {
   -webkit-text-stroke: 0.2px rgb(224, 223, 223);
 }
 
 .text-stock-dark {
-  -webkit-text-stroke: 0.5px rgb(5, 5, 5);
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(5, 5, 5);
 }
