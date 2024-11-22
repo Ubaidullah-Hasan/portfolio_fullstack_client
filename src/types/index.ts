@@ -13,14 +13,14 @@ export interface IEducation {
   degree: string;
   image: string;
   institution: string;
-  startDate: string; 
-  endDate: string;   
+  startDate: string;
+  endDate: string;
   gpa: number;
   major: string;
   minor: string;
   courses: string[];
   achievements: string[];
-} 
+}
 
 export interface ISkill {
   name: string;
@@ -29,4 +29,15 @@ export interface ISkill {
   description: string;
   yearsOfExperience: number;
   category?: string;
+}
+
+export interface IProject {
+  title: string;
+  description: string;
+  technologies: string[];
+  startDate: Date;
+  endDate: Date | null;
+  isOngoing: boolean;
+  link: string;
+  images: string[];
 }

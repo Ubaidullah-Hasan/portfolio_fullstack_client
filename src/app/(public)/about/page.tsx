@@ -87,7 +87,7 @@ const About = () => {
               className=" text-sm border border-black rounded-xl bg-transparent font-semibold bg-blue-800 hover:bg-black duration-200 text-white hover:text-white"
               endContent={
                 <LiaDownloadSolid
-                  className="duration-100 text-white animate-bounce"
+                  className="duration-100 text-white hover:text-white animate-bounce"
                   size={20}
                 />
               }

@@ -11,7 +11,7 @@ interface IEducationData {
 const EducationCards = ({ educationData }: IEducationData) => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {educationData.map((edu, index) => (
+            {educationData?.map((edu, index) => (
                 <div key={index} className="bg-white shadow-sm hover:shadow-lg border rounded-lg overflow-hidden">
                     <Image alt={edu.degree} className="rounded-t-lg rounded-b-none" height={200} src={edu.image} width={400} />
                     <div className="p-4">

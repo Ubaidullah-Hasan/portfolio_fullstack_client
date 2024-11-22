@@ -55,7 +55,7 @@ const skillData: ISkill[] = [
 
 const SkillsPage = async() => {
     const data = await getSkillsData();
-    // console.log(data); // todo
+    // console.log({data}); // todo
 
     return (
         <section

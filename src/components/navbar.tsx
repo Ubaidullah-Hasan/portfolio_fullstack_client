@@ -94,7 +94,7 @@ export const Navbar = () => {
 
   return (
     <NextUINavbar
-      className={`${isScrolled ? "h-[80px] backdrop-blur-md " : "h-[100px]"} duration-200 bg-transparent border-b`}
+      className={`${isScrolled ? "h-[80px] backdrop-blur-md " : "h-[100px]"} custom-nav duration-200 bg-transparent border-b`}
       maxWidth="xl"
       position={isScrolled ? "sticky" : "static"}
     >

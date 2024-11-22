@@ -1,13 +1,15 @@
 "use server"
-import axios from "axios";
 
 export async function getSkillsData() {
     try {
-        const response = await axios.get(`${process.env.BACKEND_URL}/skills`);
-        const {data} = response.data;
-
+        const response = await fetch(`${process.env.BACKEND_URL}/skills`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const { data } = await response.json();
         return data;
     } catch (error) {
-        console.log("Error fetching education data:", error);
+        console.log("Error fetching skills data:", error);
+        return [];
     }
 }
