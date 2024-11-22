@@ -22,20 +22,26 @@ import { GithubIcon } from "@/src/components/icons";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [selectSectionById, setSelectSectionById] = useState("");
 
   // handle scrolling behavior and navigation to another sections
   const handleScroll = (id: string) => {
+    setSelectSectionById("#"+id);
     const section = document.getElementById(id);
 
     if (section) {
       section.scrollIntoView({
         behavior: "smooth",
-        // block: "center", // Align section to the middle of the viewport
       });
     }
   };
+  console.log(selectSectionById)
 
   useEffect(() => {
+    if (window.scrollY >= 100) {
+      setIsScrolled(true);
+    }
+
     const handleScrolled = () => {
       if (window.scrollY >= 100) {
         setIsScrolled(true);
@@ -52,36 +58,38 @@ export const Navbar = () => {
   }, []);
 
   // to show menu active items styles
-  const [activeSection, setActiveSection] = useState("");
+  // const [activeSection, setActiveSection] = useState("");
 
-  const handleScrollSpy = () => {
-    const sections = siteConfig.navItems.map((item) =>
-      document.getElementById(item.href.replace("#", "")),
-    );
-    const scrollPosition = window.scrollY;
+  // const handleScrollSpy = () => {
+  //   const sections = siteConfig.navItems.map((item) =>
+  //     document.getElementById(item.href.replace("#", "")),
+  //   );
+  //   const scrollPosition = window.scrollY;
 
-    sections.forEach((section) => {
-      if (section) {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
+  //   sections.forEach((section) => {
+  //     if (section) {
+  //       const sectionTop = section.offsetTop;
+  //       const sectionHeight = section.clientHeight;
 
-        if (
-          scrollPosition >= sectionTop &&
-          scrollPosition < sectionTop + sectionHeight
-        ) {
-          setActiveSection(section.id);
-        }
-      }
-    });
-  };
+  //       if (
+  //         scrollPosition >= sectionTop &&
+  //         scrollPosition < sectionTop + sectionHeight
+  //       ) {
+  //         setActiveSection(section.id);
+  //       }
+  //     }
+  //   });
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScrollSpy);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScrollSpy);
 
-    return () => {
-      window.removeEventListener("scroll", handleScrollSpy);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScrollSpy);
+  //   };
+  // }, []);
+
+  
 
   return (
     <NextUINavbar
@@ -109,9 +117,9 @@ export const Navbar = () => {
               <button
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  activeSection === item.href.replace("#", "")
-                    ? "text-blue-500 font-bold"
-                    : "data-[active=true]:text-blue-500 data-[active=true]:font-bold font-semibold",
+                  selectSectionById === item.href
+                    ? "!text-blue-500 font-bold "
+                    : "font-medium",
                 )}
                 onClick={() => handleScroll(item.href.replace("#", ""))} // Remove '#' for id
               >
