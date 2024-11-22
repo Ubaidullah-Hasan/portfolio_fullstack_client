@@ -4,7 +4,6 @@ import { getEducationData } from "@/src/services/education.services";
 
 const Education = async () => {
   const educationData = await getEducationData();
-  // console.log(educationData);
 
   return (
     <section

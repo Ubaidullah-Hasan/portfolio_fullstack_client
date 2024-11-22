@@ -35,6 +35,7 @@ export const Navbar = () => {
       });
     }
   };
+
   console.log(selectSectionById)
 
   useEffect(() => {

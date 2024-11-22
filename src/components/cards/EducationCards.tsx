@@ -1,8 +1,9 @@
 // EducationCards.tsx
 
-import { IEducation } from '@/src/types';
 import { Image } from '@nextui-org/image';
 import React from 'react';
+
+import { IEducation } from '@/src/types';
 
 interface IEducationData {
     educationData: IEducation[];
@@ -12,7 +13,7 @@ const EducationCards = ({ educationData }: IEducationData) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {educationData.map((edu, index) => (
                 <div key={index} className="bg-white shadow-sm hover:shadow-lg border rounded-lg overflow-hidden">
-                    <Image src={edu.image} alt={edu.degree} width={400} height={200} className="rounded-t-lg rounded-b-none" />
+                    <Image alt={edu.degree} className="rounded-t-lg rounded-b-none" height={200} src={edu.image} width={400} />
                     <div className="p-4">
                         <h2 className="text-xl font-bold mb-3">{edu.degree}</h2>
                         <h3 className="text-md text-gray-600 font-medium">{edu.institution}</h3>

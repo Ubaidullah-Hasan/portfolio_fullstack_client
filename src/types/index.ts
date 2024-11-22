@@ -21,3 +21,12 @@ export interface IEducation {
   courses: string[];
   achievements: string[];
 } 
+
+export interface ISkill {
+  name: string;
+  percentage: number;
+  image: string;
+  description: string;
+  yearsOfExperience: number;
+  category?: string;
+}

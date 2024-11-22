@@ -13,8 +13,20 @@ export const siteConfig = {
       href: "#education",
     },
     {
-      label: "skills",
+      label: "Skills",
       href: "#skills",
+    },
+    {
+      label: "Experience",
+      href: "#experience",
+    },
+    {
+      label: "Projects",
+      href: "#projects",
+    },
+    {
+      label: "Blog",
+      href: "#blog",
     },
   ],
   navMenuItems: [
