@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-h1, h2, h3, h4,h5, h6, p, .custom-nav a{
-  color: black;
-}
-
-.custom-nav button {
-  color: black;
-}
 
 html{
   scroll-behavior: smooth;

@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Input, Button, Link } from "@nextui-org/react";
+import { Input, Button, Link, Switch } from "@nextui-org/react";
 import { contactSchema } from "@/src/validationSchema";
 import { FaDiscord, FaFacebookF, FaGithub, FaLinkedinIn, FaLocationDot, FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
@@ -35,12 +35,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-gray-200 bg-gradient-to-t from-blue-400 to-blue-100 text-white px-5">
+    <footer className="border-t  border-gray-200 bg-gradient-to-t from-blue-400 to-blue-100 text-white px-5">
       {/* Contact Form Section */}
       <div className="pt-20 max-w-screen-xl  mx-auto grid gap-8 sm:grid-cols-2 justify-between">
         {/* Contact Form */}
         <div className="">
-          <h2 className="text-2xl font-bold mb-4">Contact Me</h2>
+          <h2 className="text-2xl font-bold mb-4 text-black">Contact Me</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="rounded-xl bg-[url('https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg')] bg-cover bg-center">
             <div className="rounded-xl space-y-4 bg-transparent backdrop-blur-md p-6">
               {/* Name Field */}
@@ -109,7 +109,7 @@ const Footer = () => {
         </div>
 
         {/* Contact Details */}
-        <div className="flex flex-col items-start lg:ms-[120px] space-y-4 ">
+        <div className="flex flex-col items-start lg:ms-[120px] space-y-4 text-black">
           <h2 className="text-2xl font-bold mb-4">Contact Details</h2>
           <p className="flex items-center gap-2">
             <MdEmail />
@@ -126,7 +126,7 @@ const Footer = () => {
           <div className="flex items-center justify-center gap-x-3">
             <Link isExternal aria-label="Twitter" href={siteConfig.links.facebook}>
               <FaFacebookF
-                className="text-black hover:text-blue-600 border p-2 rounded-md"
+                className="text-black hover:text-blue-600 border  p-2 rounded-md"
                 size={40}
               />
             </Link>
