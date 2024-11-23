@@ -1,7 +1,8 @@
-import Image from 'next/image';
+
+import { Avatar } from '@nextui-org/avatar';
 
 import { ISkill } from '@/src/types';
-import { Avatar } from '@nextui-org/avatar';
+
 
 // Function to determine the gradient background based on percentage
 const getGradientBackground = (percentage: number): string => {
@@ -18,7 +19,7 @@ const SkillCard = ({ skillData }: { skillData: ISkill }) => {
     return (
         <div className={`rounded-lg shadow-lg ${gradientClass} p-6 `}>
             <div className="flex flex-col items-center gap-4">
-                <Avatar src={skillData.image} className="w-20 h-20 text-large" />
+                <Avatar className="w-20 h-20 text-large" src={skillData.image} />
 
                 <div className='flex flex-col justify-center items-center'>
                     <h4 className="text-white font-bold mb-2">{skillData.name}</h4>

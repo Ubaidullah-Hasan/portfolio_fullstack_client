@@ -36,7 +36,6 @@ export const Navbar = () => {
     }
   };
 
-  console.log(selectSectionById)
 
   useEffect(() => {
     if (window.scrollY >= 100) {
@@ -57,40 +56,6 @@ export const Navbar = () => {
       window.removeEventListener("scroll", handleScrolled);
     };
   }, []);
-
-  // to show menu active items styles
-  // const [activeSection, setActiveSection] = useState("");
-
-  // const handleScrollSpy = () => {
-  //   const sections = siteConfig.navItems.map((item) =>
-  //     document.getElementById(item.href.replace("#", "")),
-  //   );
-  //   const scrollPosition = window.scrollY;
-
-  //   sections.forEach((section) => {
-  //     if (section) {
-  //       const sectionTop = section.offsetTop;
-  //       const sectionHeight = section.clientHeight;
-
-  //       if (
-  //         scrollPosition >= sectionTop &&
-  //         scrollPosition < sectionTop + sectionHeight
-  //       ) {
-  //         setActiveSection(section.id);
-  //       }
-  //     }
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScrollSpy);
-
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScrollSpy);
-  //   };
-  // }, []);
-
-  
 
   return (
     <NextUINavbar

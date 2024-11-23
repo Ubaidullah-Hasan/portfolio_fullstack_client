@@ -1,6 +1,4 @@
 import SectionTitle from '@/src/components/SectionTitle';
-
-
 import { ISkill } from '@/src/types';
 import SkillCard from '@/src/components/cards/SkillCard';
 import { getSkillsData } from '@/src/services/skills.services';
@@ -55,7 +53,7 @@ const skillData: ISkill[] = [
 
 const SkillsPage = async() => {
     const data = await getSkillsData();
-    // console.log({data}); // todo
+    // console.log({skills: data}); // todo
 
     return (
         <section

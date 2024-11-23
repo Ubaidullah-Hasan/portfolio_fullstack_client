@@ -4,6 +4,7 @@
 export async function getEducationData() {
     try {
         const response = await fetch(`${process.env.CLIENT_URL}/education.json`);
+
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

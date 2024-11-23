@@ -1,5 +1,5 @@
 import About from "./about/page";
-import BlogPage from "./blog/page";
+import BlogPage from "./blogs/page";
 import Education from "./education/page";
 import ExperiencePage from "./experience/page";
 import ProjectsPage from "./projects/page";
@@ -14,7 +14,7 @@ const Home = () => {
         <SkillsPage />
         <ExperiencePage />
         <ProjectsPage />
-        <BlogPage/>
+        <BlogPage />
       </div>
     </>
   );

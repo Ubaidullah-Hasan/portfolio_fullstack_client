@@ -1,8 +1,8 @@
 "use server"
 
-export async function getSkillsData() {
+export async function getBlogData() {
     try {
-        const response = await fetch(`${process.env.BACKEND_URL}/skills`);
+        const response = await fetch(`${process.env.BACKEND_URL}/blogs`);
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -11,7 +11,7 @@ export async function getSkillsData() {
 
         return data;
     } catch (error) {
-        console.log("Error fetching skills data:", error);
+        console.log("Error fetching blog data:", error);
 
         return [];
     }

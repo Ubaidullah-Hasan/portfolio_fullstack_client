@@ -1,14 +1,16 @@
 import React from "react";
-import { Image } from "@nextui-org/image";
 import { Link } from "@nextui-org/link";
 import { FaDiscord, FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { Button } from "@nextui-org/button";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { IoTelescopeOutline } from "react-icons/io5";
 import Marquee from "react-fast-marquee";
+import { Image as NextUIImage } from "@nextui-org/image";
+import Image from "next/image";
 
 import { siteConfig } from "@/src/config/site";
 import { BackgroundOfMyImg } from "@/src/components/icons";
+import checkImg from "@/src/assets/gif/cb.gif"
 
 const About = () => {
   return (
@@ -17,7 +19,7 @@ const About = () => {
       <div className="bg-white p-8 rounded-2xl flex flex-col gap-y-3 text-center ">
         {/* self info */}
         <div className="relative flex items-center justify-center mt-3 mb-12">
-          <Image
+          <NextUIImage
             className="rounded-full object-cover z-10"
             height={300}
             src="https://i.ibb.co.com/D1rY7NG/960kb.jpg"
@@ -35,13 +37,13 @@ const About = () => {
 
         {/* social link */}
         <div className="flex items-center justify-center gap-x-3">
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
+          <Link isExternal aria-label="Twitter" href={siteConfig.links.facebook}>
             <FaFacebookF
               className="text-black hover:text-blue-600 border p-2 rounded-md"
               size={40}
             />
           </Link>
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
+          <Link isExternal aria-label="Twitter" href={siteConfig.links.linkedin}>
             <FaLinkedinIn
               className="text-black hover:text-blue-600 border p-2 rounded-md"
               size={40}
@@ -114,7 +116,16 @@ const About = () => {
           </div>
         </div>
 
-        <div className="bg-white p-8 rounded-2xl">
+        <div className="bg-white p-8 rounded-2xl space-y-2">
+          <p className="flex items-center gap-1">
+            About Me
+            <Image
+              alt="Check gif image"
+              height={10}
+              src={checkImg}
+              width={20}
+            />
+          </p>
           <Marquee>
             <h3 className="font-semibold text-xl">
               I am Ubaidullah Hasan, a passionate Full-Stack MERN Developer

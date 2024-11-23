@@ -1,8 +1,9 @@
-import { IProject } from '@/src/types';
 import { Link } from '@nextui-org/link';
 import Image from 'next/image';
 import React from 'react';
 import { GoArrowUpRight } from "react-icons/go";
+
+import { IProject } from '@/src/types';
 
 
 
@@ -23,9 +24,9 @@ const ProjectCard = ({ project, i }: { project: IProject, i: number }) => {
             </div>
             <div className="mt-4">
                 <Link isExternal
+                    className="flex justify-self-start items-center justify-center gap-2 bg-black rounded-full text-white font-medium py-2 px-4 cursor-pointer"
                     href={project.link}
-                    target="_blank"
-                    className="flex justify-self-start items-center justify-center gap-2 bg-black rounded-full text-white font-medium py-2 px-4 cursor-pointer">
+                    target="_blank">
                     View Project
                     <GoArrowUpRight size={20} />
                 </Link>

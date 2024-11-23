@@ -1,6 +1,3 @@
-"use server"
-import React from 'react';
-
 import SectionTitle from '@/src/components/SectionTitle';
 import ProjectCard from '@/src/components/cards/ProjectCard';
 import { getProjectsData } from '@/src/services/projects.services';
@@ -51,8 +48,8 @@ const projects = [
 ];
 
 const ProjectsPage = async() => {
-    const projectData = await getProjectsData();
-    // console.log(data);
+    const projectsData = await getProjectsData();
+    // console.log(projectData);
 
     return (
         <section

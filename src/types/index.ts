@@ -41,3 +41,12 @@ export interface IProject {
   link: string;
   images: string[];
 }
+
+export interface IBlog {
+  _id: string;
+  title: string;
+  content: string;
+  tags: string[];
+  images: string[];
+  published: boolean;
+}

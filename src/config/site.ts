@@ -25,7 +25,7 @@ export const siteConfig = {
       href: "#projects",
     },
     {
-      label: "Blog",
+      label: "Blogs",
       href: "#blog",
     },
   ],
@@ -64,10 +64,10 @@ export const siteConfig = {
     },
   ],
   links: {
-    github: "https://github.com/nextui-org/nextui",
-    twitter: "https://twitter.com/getnextui",
-    docs: "https://nextui.org",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
+    github: "https://github.com/Ubaidullah-Hasan",
+    linkedin: "https://www.linkedin.com/in/ubaidull-hasan-818339286/",
+    facebook: "https://web.facebook.com/ohobaidullah.hasan",
+    discord: "https://discord.com/users/1134427348914151484",
+    sponsor: "https://www.fiverr.com/yours_website/build-site-wordpress-website-or-website-design-with-astra-pro-and-elementor-pro"
   },
 };
