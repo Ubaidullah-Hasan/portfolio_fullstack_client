@@ -3,13 +3,14 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Input, Button, Link, Switch } from "@nextui-org/react";
-import { contactSchema } from "@/src/validationSchema";
+import { Input, Button, Link } from "@nextui-org/react";
 import { FaDiscord, FaFacebookF, FaGithub, FaLinkedinIn, FaLocationDot, FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { IoIosSend } from "react-icons/io";
 
+import { contactSchema } from "@/src/validationSchema";
 import { siteConfig } from "@/src/config/site";
+import { useSendMessage } from "@/src/hooks/contact.hook";
 
 
 
@@ -27,11 +28,12 @@ const Footer = () => {
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   });
+  
+  const {mutate: sendMessage, isPending:sending} = useSendMessage();
 
   // Form Submission Handler
   const onSubmit = (data: ContactFormData) => {
-    console.log("Form Data:", data);
-    alert("Form submitted successfully!");
+    sendMessage(data);
   };
 
   return (
@@ -41,16 +43,16 @@ const Footer = () => {
         {/* Contact Form */}
         <div className="">
           <h2 className="text-2xl font-bold mb-4 text-black">Contact Me</h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="rounded-xl bg-[url('https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg')] bg-cover bg-center">
+          <form className="rounded-xl bg-[url('https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg')] bg-cover bg-center" onSubmit={handleSubmit(onSubmit)}>
             <div className="rounded-xl space-y-4 bg-transparent backdrop-blur-md p-6">
               {/* Name Field */}
               <div >
                 <Input
                   {...register("name")}
-                  placeholder="Your Name"
                   className="w-full rounded-lg overflow-hidden text-gray-800"
-                  size="lg"
+                  placeholder="Your Name"
                   radius="none"
+                  size="lg"
                 />
                 {errors.name && (
                   <p className="text-red-500 text-sm mt-1">
@@ -64,10 +66,10 @@ const Footer = () => {
                 <Input
                   size="lg"
                   {...register("email")}
-                  placeholder="Your Email"
-                  type="email"
                   className="w-full rounded-lg overflow-hidden text-gray-800"
+                  placeholder="Your Email"
                   radius="none"
+                  type="email"
 
                 />
                 {errors.email && (
@@ -81,10 +83,10 @@ const Footer = () => {
               <div>
                 <textarea
                   {...register("message")}
+                  className="w-full p-3 rounded-lg text-gray-800"
                   placeholder="Your Message"
                   rows={5}
-                  className="w-full p-3 rounded-lg text-gray-800"
-                ></textarea>
+                 />
                 {errors.message && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.message.message}
@@ -94,15 +96,14 @@ const Footer = () => {
 
               {/* Submit Button */}
               <Button
-              size="lg"
+              className="w-full text-white bg-blue-500 font-medium hover:bg-blue-600"
+                endContent={<IoIosSend size={20} />}
+                size="lg"
                 type="submit"
                 variant="flat"
-                className="w-full text-white bg-blue-500 font-medium hover:bg-blue-600"
-                endContent={<IoIosSend size={20} />}
+                isLoading={sending}
               >
                 Send Message
-
-
               </Button>
             </div>
           </form>

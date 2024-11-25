@@ -50,3 +50,9 @@ export interface IBlog {
   images: string[];
   published: boolean;
 }
+
+export interface IContact {
+  name: string;
+  email: string;
+  message: string;
+}

@@ -1,13 +1,15 @@
-import SectionTitle from '@/src/components/SectionTitle';
-import { getBlogData } from '@/src/services/blog.services';
-import BlogCard from '@/src/components/cards/BlogCard';
-import { IBlog } from '@/src/types';
 import { Button } from '@nextui-org/button';
 import { GrView } from "react-icons/gr";
 import Link from 'next/link';
 
+import SectionTitle from '@/src/components/SectionTitle';
+import { getBlogData } from '@/src/services/blog.services';
+import BlogCard from '@/src/components/cards/BlogCard';
+import { IBlog } from '@/src/types';
+
 const BlogPage = async () => {
     const blogs = await getBlogData();
+
     console.log(blogs)
 
     return (
@@ -31,7 +33,6 @@ const BlogPage = async () => {
 
             <Button
                 as={Link}
-                href="/blogs"
                 className="mt-10 w-[200px] mx-auto text-sm border bg-blue-700 rounded-xl font-bold hover:bg-blue-800 text-white"
                 endContent={
                     <GrView
@@ -39,6 +40,7 @@ const BlogPage = async () => {
                         size={15}
                     />
                 }
+                href="/blogs"
                 variant="flat"
             >
                 View All

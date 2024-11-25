@@ -13,6 +13,7 @@ export async function getProjectsData() {
         return data;
     } catch (error) {
         console.log("Error fetching projects data:", error);
+
         return [];
         // throw new Error("Something went wrong fetching skills data!");
     }
