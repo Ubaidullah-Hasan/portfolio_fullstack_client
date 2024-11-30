@@ -3,7 +3,7 @@
 
 export async function getEducationData() {
     try {
-        const response = await fetch(`${process.env.CLIENT_URL}/education.json`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/education.json`);
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -13,7 +13,7 @@ export async function getEducationData() {
         return data.education;
     } catch (error) {
         console.log("Error fetching education data:", error);
-        throw new Error("Something went wrong!");
         // return [];
+        throw new Error("Something went wrong!");
     }
 }

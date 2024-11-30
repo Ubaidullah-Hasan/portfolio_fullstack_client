@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "@nextui-org/link";
 import { FaDiscord, FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { Button } from "@nextui-org/button";
-import { LiaDownloadSolid } from "react-icons/lia";
-import { IoTelescopeOutline } from "react-icons/io5";
 import Marquee from "react-fast-marquee";
 import { Image as NextUIImage } from "@nextui-org/image";
 import Image from "next/image";
@@ -11,6 +8,8 @@ import Image from "next/image";
 import { siteConfig } from "@/src/config/site";
 import { BackgroundOfMyImg } from "@/src/components/icons";
 import checkImg from "@/src/assets/gif/cb.gif"
+import CVDownloadButton from "@/src/components/CVDownloadButton";
+import CVView from "@/src/components/CVView";
 
 const About = () => {
   return (
@@ -84,35 +83,8 @@ const About = () => {
           </p>
 
           <div className="flex gap-6 items-center">
-            <Button
-              as={Link}
-              className=" text-sm border border-black rounded-xl bg-transparent font-semibold bg-blue-800 hover:bg-black duration-200 text-white hover:text-white"
-              endContent={
-                <LiaDownloadSolid
-                  className="duration-100 text-white hover:text-white animate-bounce"
-                  size={20}
-                />
-              }
-              href={siteConfig.links.sponsor} // todo
-              variant="flat"
-            >
-              Download CV
-            </Button>
-            <Button
-              isExternal
-              as={Link}
-              className="text-sm border border-black rounded-xl bg-transparent font-semibold hover:bg-blue-800 text-black hover:text-white "
-              endContent={
-                <IoTelescopeOutline
-                  className="duration-100 hover:text-white"
-                  size={20}
-                />
-              }
-              href={siteConfig.links.sponsor} // todo
-              variant="flat"
-            >
-              View CV
-            </Button>
+            <CVDownloadButton />
+            <CVView />
           </div>
         </div>
 

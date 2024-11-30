@@ -8,7 +8,7 @@ import SkillsPage from "./skills/page";
 const Home = () => {
   return (
     <>
-      <div className="my-[20px] space-y-[100px]">
+      <div className="my-[20px] space-y-[100px] pb-[30px] lg:pb-[80px]">
         <About />
         <Education />
         <SkillsPage />

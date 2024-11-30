@@ -1,7 +1,8 @@
 import { useMutation } from "@tanstack/react-query"
+import { toast } from "sonner";
+
 import { sendMessageToAdmin } from "../services/contact.services"
 import { IContact } from "../types";
-import { toast } from "sonner";
 
 export const useSendMessage = () => {
     return useMutation({

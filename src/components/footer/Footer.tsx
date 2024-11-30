@@ -7,6 +7,7 @@ import { Input, Button, Link } from "@nextui-org/react";
 import { FaDiscord, FaFacebookF, FaGithub, FaLinkedinIn, FaLocationDot, FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { IoIosSend } from "react-icons/io";
+import { useEffect } from "react";
 
 import { contactSchema } from "@/src/validationSchema";
 import { siteConfig } from "@/src/config/site";
@@ -24,24 +25,31 @@ const Footer = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   });
-  
-  const {mutate: sendMessage, isPending:sending} = useSendMessage();
+
+  const { mutate: sendMessage, isPending: sending, isSuccess } = useSendMessage();
 
   // Form Submission Handler
   const onSubmit = (data: ContactFormData) => {
     sendMessage(data);
   };
 
+  useEffect(() => {
+    if (isSuccess) {
+      reset();
+    }
+  }, [isSuccess])
+
   return (
-    <footer className="border-t  border-gray-200 bg-gradient-to-t from-blue-400 to-blue-100 text-white px-5">
+    <footer className="border-t border-gray-200 bg-gradient-to-t from-blue-400 to-blue-100 text-white px-5">
       {/* Contact Form Section */}
       <div className="pt-20 max-w-screen-xl  mx-auto grid gap-8 sm:grid-cols-2 justify-between">
         {/* Contact Form */}
-        <div className="">
+        <div id="contact">
           <h2 className="text-2xl font-bold mb-4 text-black">Contact Me</h2>
           <form className="rounded-xl bg-[url('https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg')] bg-cover bg-center" onSubmit={handleSubmit(onSubmit)}>
             <div className="rounded-xl space-y-4 bg-transparent backdrop-blur-md p-6">
@@ -86,7 +94,7 @@ const Footer = () => {
                   className="w-full p-3 rounded-lg text-gray-800"
                   placeholder="Your Message"
                   rows={5}
-                 />
+                />
                 {errors.message && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.message.message}
@@ -96,12 +104,12 @@ const Footer = () => {
 
               {/* Submit Button */}
               <Button
-              className="w-full text-white bg-blue-500 font-medium hover:bg-blue-600"
+                className="w-full text-white bg-blue-500 font-medium hover:bg-blue-600"
                 endContent={<IoIosSend size={20} />}
+                isLoading={sending}
                 size="lg"
                 type="submit"
                 variant="flat"
-                isLoading={sending}
               >
                 Send Message
               </Button>

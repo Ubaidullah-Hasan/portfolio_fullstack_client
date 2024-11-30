@@ -10,7 +10,7 @@ import { IBlog } from '@/src/types';
 const BlogPage = async () => {
     const blogs = await getBlogData();
 
-    console.log(blogs)
+    // console.log(blogs)
 
     return (
         <section

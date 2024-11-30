@@ -56,3 +56,15 @@ export interface IContact {
   email: string;
   message: string;
 }
+
+export type TExperience = {
+  title: string;
+  company: string;
+  location: string;
+  description: string;
+  startDate: string;
+  endDate?: string;
+  isCurrent: boolean;
+  skills: string[];
+  projectsLink: string[];
+};

@@ -26,7 +26,7 @@ export const Navbar = () => {
 
   // handle scrolling behavior and navigation to another sections
   const handleScroll = (id: string) => {
-    setSelectSectionById("#"+id);
+    setSelectSectionById("#" + id);
     const section = document.getElementById(id);
 
     if (section) {
@@ -66,7 +66,7 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         {/* logo start */}
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
+          <NextLink className="flex justify-start items-center gap-1" href="/" onClick={() => setSelectSectionById("")}>
             <p className="font-semibold font-mono uppercase text-lg text-transparent text-stock-dark">
               Hasan
             </p>

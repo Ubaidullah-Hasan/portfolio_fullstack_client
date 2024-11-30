@@ -1,43 +1,38 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { getCurrentUser } from "./services/login.services";
 
 
-const AuthRoutes = ["/login"];
-
-type Role = keyof typeof roleBasedRoutes;
-
-const roleBasedRoutes = {
-  USER: [/^\/profile/],
-  ADMIN: [/^\/admin/],
-};
+const AuthRoutes = ["/dashboard/login"];
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // const user = await getCurrentUser();
+  const user = await getCurrentUser();
 
-//   if (!user) {
-//     if (AuthRoutes.includes(pathname)) {
-//       return NextResponse.next();
-//     } else {
-//       return NextResponse.redirect(
-//         new URL(`/login?redirect=${pathname}`, request.url),
-//       );
-//     }
-//   }
+  if (!user) {
+    if (pathname.includes(AuthRoutes[0])) {
+      return NextResponse.next();
+    } else {
+      return NextResponse.redirect(
+        new URL(`/dashboard/login?redirect=${pathname}`, request.url),
+      );
+    }
+  }
 
-//   if (user?.role && roleBasedRoutes[user?.role as Role]) {
-//     const routes = roleBasedRoutes[user?.role as Role];
+  if (user) {
+    if (pathname === AuthRoutes[0]) {
+      return NextResponse.redirect(
+        new URL(`/dashboard`, request.url),
+      );
+    }
+    return NextResponse.next();
+  }
 
-//     if (routes.some((route) => pathname.match(route))) {
-//       return NextResponse.next();
-//     }
-//   }
-
-//   return NextResponse.redirect(new URL("/", request.url));
+  return NextResponse.redirect(new URL("/", request.url));
 }
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/dashboard", "/dashboard/:page*", "/login"],
+  matcher: ["/dashboard", "/dashboard/:page*"],
 };
