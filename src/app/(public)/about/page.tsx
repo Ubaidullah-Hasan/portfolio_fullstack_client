@@ -6,10 +6,11 @@ import { Image as NextUIImage } from "@nextui-org/image";
 import Image from "next/image";
 
 import { siteConfig } from "@/src/config/site";
-import { BackgroundOfMyImg } from "@/src/components/icons";
+// import { BackgroundOfMyImg } from "@/src/components/icons";
 import checkImg from "@/src/assets/gif/cb.gif"
 import CVDownloadButton from "@/src/components/CVDownloadButton";
 import CVView from "@/src/components/CVView";
+import LeftSideImage from "../../../components/LeftSideImage";
 
 const About = () => {
   return (
@@ -17,20 +18,8 @@ const About = () => {
       {/* left side */}
       <div className="bg-white p-8 rounded-2xl flex flex-col gap-y-3 text-center ">
         {/* self info */}
-        <div className="relative flex items-center justify-center mt-3 mb-12">
-          <NextUIImage
-            className="rounded-full object-cover z-10"
-            height={300}
-            src="https://i.ibb.co.com/D1rY7NG/960kb.jpg"
-            width={300}
-          />
-          <BackgroundOfMyImg
-            className="absolute z-[0] animate-spin ease-out"
-            height={365}
-            style={{ animationDuration: "10s" }}
-            width={365}
-          />
-        </div>
+        <LeftSideImage />
+
         <h1 className="text-4xl font-bold ">Ubaidullah Hasan</h1>
         <p>Full-Stack MERN Developer for Scalable Web Apps.</p>
 
