@@ -26,6 +26,7 @@ export async function middleware(request: NextRequest) {
         new URL(`/dashboard`, request.url),
       );
     }
+    
     return NextResponse.next();
   }
 

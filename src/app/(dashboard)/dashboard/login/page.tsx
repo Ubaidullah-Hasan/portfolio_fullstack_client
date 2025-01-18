@@ -56,6 +56,7 @@ export default function Login() {
             email: email,
             password: password
         }
+        
         loginUser(userData);
     }
 

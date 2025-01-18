@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "@nextui-org/link";
 import { FaDiscord, FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Marquee from "react-fast-marquee";
-import { Image as NextUIImage } from "@nextui-org/image";
 import Image from "next/image";
 
 import { siteConfig } from "@/src/config/site";
