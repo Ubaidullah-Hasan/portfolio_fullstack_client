@@ -1,4 +1,6 @@
+import SkillsChart from "@/src/components/dashboard/SkillsChart";
 import React from "react";
+
 
 const DashboardPage = () => {
   return (
@@ -37,7 +39,7 @@ const DashboardPage = () => {
 
             {/* skills graph */}
             <div className="w-full bg-white h-full rounded-md">
-
+              <SkillsChart />
             </div>
           </div>
         </div>
