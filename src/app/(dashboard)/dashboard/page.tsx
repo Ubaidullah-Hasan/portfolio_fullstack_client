@@ -1,8 +1,11 @@
 import SkillsChart from "@/src/components/dashboard/SkillsChart";
-import React from "react";
+import { getSkillsAnalysis } from "@/src/services/skills.services";
 
 
-const DashboardPage = () => {
+const DashboardPage = async () => {
+  const skillsAnalysisData = await getSkillsAnalysis();
+  console.log(skillsAnalysisData);
+
   return (
     <div
       className={`h-screen`}
@@ -26,20 +29,14 @@ const DashboardPage = () => {
           </div>
           <div className=" flex flex-col gap-5 rounded-md h-full">
             <div className="flex gap-5 ">
-              <div className="w-full bg-white h-[300px] rounded-md" >
-
-              </div>
-              <div className="w-full bg-white/50 h-[300px] rounded-md">
-
-              </div>
-              <div className="w-full bg-white h-[300px] rounded-md">
-
-              </div>
+              <div className="w-full bg-white h-[300px] rounded-md" />
+              <div className="w-full bg-white/50 h-[300px] rounded-md" />
+              <div className="w-full bg-white h-[300px] rounded-md" />
             </div>
 
             {/* skills graph */}
             <div className="w-full bg-white h-full rounded-md">
-              <SkillsChart />
+              <SkillsChart data={skillsAnalysisData} />
             </div>
           </div>
         </div>

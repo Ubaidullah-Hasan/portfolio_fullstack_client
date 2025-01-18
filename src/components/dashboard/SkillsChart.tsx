@@ -1,14 +1,17 @@
 "use client"
-import React, { useState } from 'react';
+import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 
+interface IProps {
+    name: string;
+    percentage:number;
+}
 
-const SkillsChart = () => {
+const SkillsChart = ({ data }: { data: IProps[]}) => {
     const [state, setState] = React.useState<any>({
-
         series: [{
             name: 'Percentage',
-            data: [31, 40, 28, 51, 42, 109, 100] // todo: technology percentage
+            data: data?.map((item) => item.percentage) // y axis labels
         }],
         options: {
             chart: {
@@ -42,9 +45,7 @@ const SkillsChart = () => {
             },
             xaxis: {
                 type: 'string',
-                categories: [
-                    "HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB", "TypeScript"
-                ] // todo: technology name
+                categories: data?.map((item) => item.name) // x axis labels
             },
             title: {
                 text: 'Analysis Of My Skills',
@@ -58,7 +59,7 @@ const SkillsChart = () => {
     return (
         <div>
             <div id="chart">
-                <ReactApexChart options={state.options} series={state.series} type="area" height={350} />
+                <ReactApexChart height={350} options={state.options} series={state.series} type="area" />
             </div>
         </div>
     );

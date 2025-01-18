@@ -1,18 +1,20 @@
 "use server"
 
 import { FieldValues } from "react-hook-form";
-
-import axiosInstance from "../lib/axiosInstance"
 import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
+
+import axiosInstance from "../lib/axiosInstance"
 
 export async function loginUser(userData: FieldValues) {
     try {
         const { data } = await axiosInstance.post("auth/login", userData);
+
         if (data.success) {
             cookies().set("accessToken", data?.data?.accessToken);
             cookies().set("refreshToken", data?.data?.refreshToken);
         }
+
         return data;
     } catch (error: any) {
         console.log(error.response.data);

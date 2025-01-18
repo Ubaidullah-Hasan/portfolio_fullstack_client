@@ -4,56 +4,9 @@ import SkillCard from '@/src/components/cards/SkillCard';
 import { getSkillsData } from '@/src/services/skills.services';
 
 
-const skillData: ISkill[] = [
-    {
-        name: "JavaScript",
-        percentage: 30,
-        image: "https://149818895.v2.pressablecdn.com/wp-content/uploads/2019/06/Daffodil-International-University.jpg",
-        description: "Programming Language",
-        yearsOfExperience: 5,
-    },
-    {
-        name: "React",
-        percentage: 90,
-        image: "https://149818895.v2.pressablecdn.com/wp-content/uploads/2019/06/Daffodil-International-University.jpg",
-        description: "JavaScript Library",
-        yearsOfExperience: 3,
-    },
-    {
-        name: "Node.js",
-        percentage: 65,
-        image: "https://149818895.v2.pressablecdn.com/wp-content/uploads/2019/06/Daffodil-International-University.jpg",
-        description: "JavaScript Runtime",
-        yearsOfExperience: 4,
-    },
-    {
-        name: "TypeScript",
-        percentage: 75,
-        image: "https://149818895.v2.pressablecdn.com/wp-content/uploads/2019/06/Daffodil-International-University.jpg",
-        description: "Superset of JavaScript",
-        yearsOfExperience: 2,
-    },
-    {
-        name: "Python",
-        percentage: 70,
-        image: "https://149818895.v2.pressablecdn.com/wp-content/uploads/2019/06/Daffodil-International-University.jpg",
-        description: "Programming Language",
-        yearsOfExperience: 3,
-    },
-    {
-        name: "SQL",
-        percentage: 96,
-        image: "https://149818895.v2.pressablecdn.com/wp-content/uploads/2019/06/Daffodil-International-University.jpg",
-        description: "Query Language",
-        yearsOfExperience: 4,
-    },
-];
-
-
 
 const SkillsPage = async() => {
-    const data = await getSkillsData();
-    // console.log({skills: data}); // todo
+    const skillData: ISkill[] = await getSkillsData();
 
     return (
         <section

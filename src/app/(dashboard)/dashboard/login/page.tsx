@@ -84,33 +84,24 @@ export default function Login() {
                             <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
                             <ModalBody>
                                 <Input
-                                    onChange={(e) => {
-                                        setEmail(e.target.value);
-                                    }}
                                     endContent={
                                         <IoIosMail className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
                                     }
                                     errorMessage={emailError}
                                     isInvalid={!!emailError}
+                                    isRequired={true}
                                     label="Email"
                                     placeholder="Enter your email"
                                     type="email"
-                                    variant="bordered"
                                     value={email}
-                                    isRequired={true}
+                                    variant="bordered"
+                                    onChange={(e) => {
+                                        setEmail(e.target.value);
+                                    }}
                                 />
                                 <Input
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    value={password}
-                                    isRequired={true}
-                                    label="Password"
-                                    placeholder="Enter your password"
-                                    type={isVisible ? "text" : "password"}
-                                    variant="bordered"
-                                    errorMessage={passwordError}
-                                    isInvalid={!!passwordError}
                                     endContent={
-                                        <button className="focus:outline-none" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
+                                        <button aria-label="toggle password visibility" className="focus:outline-none" type="button" onClick={toggleVisibility}>
                                             {isVisible ? (
                                                 <FaLockOpen className="text-2xl text-default-400 pointer-events-none" />
                                             ) : (
@@ -118,6 +109,15 @@ export default function Login() {
                                             )}
                                         </button>
                                     }
+                                    errorMessage={passwordError}
+                                    isInvalid={!!passwordError}
+                                    isRequired={true}
+                                    label="Password"
+                                    placeholder="Enter your password"
+                                    type={isVisible ? "text" : "password"}
+                                    value={password}
+                                    variant="bordered"
+                                    onChange={(e) => setPassword(e.target.value)}
 
                                 />
                                 <div className="flex py-2 px-1 justify-between">
@@ -137,7 +137,7 @@ export default function Login() {
                                 <Button color="danger" variant="flat" onPress={onClose}>
                                     Close
                                 </Button>
-                                <Button type="submit" color="primary" onPress={handleLogin}>
+                                <Button color="primary" type="submit" onPress={handleLogin}>
                                     Sign in
                                 </Button>
                             </ModalFooter>

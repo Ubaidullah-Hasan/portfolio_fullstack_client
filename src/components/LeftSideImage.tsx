@@ -1,8 +1,9 @@
 "use client"
-import { BackgroundOfMyImg } from "@/src/components/icons";
 import { Image } from "@nextui-org/image";
 import { useState } from "react";
 import { Skeleton } from "@nextui-org/skeleton";
+
+import { BackgroundOfMyImg } from "@/src/components/icons";
 // import { Image as NextUIImage } from "@nextui-org/image";
 
 
@@ -19,9 +20,9 @@ const LeftSideImage = () => {
        <Image
         className="object-cover z-10"
         height={300}
+        radius="full"
         src={"https://i.ibb.co.com/D1rY7NG/960kb.jpg"}
         width={300}
-        radius="full"
         onLoad={() => setImageLoaded(true)}
       />
 

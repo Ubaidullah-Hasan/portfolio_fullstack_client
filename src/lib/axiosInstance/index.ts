@@ -1,6 +1,7 @@
-import { getNewAccessToken } from "@/src/services/login.services";
 import axios from "axios";
 import { cookies } from "next/headers";
+
+import { getNewAccessToken } from "@/src/services/login.services";
 
 const axiosInstance = axios.create({
     baseURL: process.env.BACKEND_URL

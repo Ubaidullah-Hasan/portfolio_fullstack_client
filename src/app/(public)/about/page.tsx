@@ -4,12 +4,13 @@ import { FaDiscord, FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
 
+import LeftSideImage from "../../../components/LeftSideImage";
+
 import { siteConfig } from "@/src/config/site";
 // import { BackgroundOfMyImg } from "@/src/components/icons";
 import checkImg from "@/src/assets/gif/cb.gif"
 import CVDownloadButton from "@/src/components/CVDownloadButton";
 import CVView from "@/src/components/CVView";
-import LeftSideImage from "../../../components/LeftSideImage";
 
 const About = () => {
   return (
