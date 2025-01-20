@@ -10,6 +10,9 @@ const nextConfig = {
             },
         ],
     },
+    experimental: {
+        missingSuspenseWithCSRBailout: false, // disable useSearchParamss build time error
+    },
 };
 
 module.exports = nextConfig;

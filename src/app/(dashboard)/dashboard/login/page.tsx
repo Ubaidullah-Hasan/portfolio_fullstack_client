@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Checkbox, Input, Link } from "@nextui-org/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -15,7 +16,8 @@ export default function Login() {
 
     const toggleVisibility = () => setIsVisible(!isVisible);
     const router = useRouter();
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    // const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const { onOpenChange } = useDisclosure();
     const { mutate: loginUser, isPending, isSuccess } = useUserLogin();
 
     const onClose = () => {
@@ -56,7 +58,7 @@ export default function Login() {
             email: email,
             password: password
         }
-        
+
         loginUser(userData);
     }
 
@@ -68,83 +70,82 @@ export default function Login() {
                 router.push("/dashboard");
             }
         }
-    },[isPending, isSuccess]);
+    }, [isPending, isSuccess]);
 
     return (
-        <>
-            <Modal
-                isOpen={true}
-                placement="top-center"
-                onClose={onClose}
-                onOpenChange={onOpenChange}
-            >
-                <ModalContent>
-                    {(onClose) => (
-                        <>
-                            <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
-                            <ModalBody>
-                                <Input
-                                    endContent={
-                                        <IoIosMail className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                                    }
-                                    errorMessage={emailError}
-                                    isInvalid={!!emailError}
-                                    isRequired={true}
-                                    label="Email"
-                                    placeholder="Enter your email"
-                                    type="email"
-                                    value={email}
-                                    variant="bordered"
-                                    onChange={(e) => {
-                                        setEmail(e.target.value);
-                                    }}
-                                />
-                                <Input
-                                    endContent={
-                                        <button aria-label="toggle password visibility" className="focus:outline-none" type="button" onClick={toggleVisibility}>
-                                            {isVisible ? (
-                                                <FaLockOpen className="text-2xl text-default-400 pointer-events-none" />
-                                            ) : (
-                                                <FaLock className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                                            )}
-                                        </button>
-                                    }
-                                    errorMessage={passwordError}
-                                    isInvalid={!!passwordError}
-                                    isRequired={true}
-                                    label="Password"
-                                    placeholder="Enter your password"
-                                    type={isVisible ? "text" : "password"}
-                                    value={password}
-                                    variant="bordered"
-                                    onChange={(e) => setPassword(e.target.value)}
 
-                                />
-                                <div className="flex py-2 px-1 justify-between">
-                                    <Checkbox
-                                        classNames={{
-                                            label: "text-small",
-                                        }}
-                                    >
-                                        Remember me
-                                    </Checkbox>
-                                    <Link color="primary" href="#" size="sm">
-                                        Forgot password?
-                                    </Link>
-                                </div>
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button color="danger" variant="flat" onPress={onClose}>
-                                    Close
-                                </Button>
-                                <Button color="primary" type="submit" onPress={handleLogin}>
-                                    Sign in
-                                </Button>
-                            </ModalFooter>
-                        </>
-                    )}
-                </ModalContent>
-            </Modal>
-        </>
+        <Modal
+            isOpen={true}
+            placement="top-center"
+            onClose={onClose}
+            onOpenChange={onOpenChange}
+        >
+            <ModalContent>
+                {(onClose) => (
+                    <>
+                        <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
+                        <ModalBody>
+                            <Input
+                                endContent={
+                                    <IoIosMail className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                                }
+                                errorMessage={emailError}
+                                isInvalid={!!emailError}
+                                isRequired={true}
+                                label="Email"
+                                placeholder="Enter your email"
+                                type="email"
+                                value={email}
+                                variant="bordered"
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                }}
+                            />
+                            <Input
+                                endContent={
+                                    <button aria-label="toggle password visibility" className="focus:outline-none" type="button" onClick={toggleVisibility}>
+                                        {isVisible ? (
+                                            <FaLockOpen className="text-2xl text-default-400 pointer-events-none" />
+                                        ) : (
+                                            <FaLock className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                                        )}
+                                    </button>
+                                }
+                                errorMessage={passwordError}
+                                isInvalid={!!passwordError}
+                                isRequired={true}
+                                label="Password"
+                                placeholder="Enter your password"
+                                type={isVisible ? "text" : "password"}
+                                value={password}
+                                variant="bordered"
+                                onChange={(e) => setPassword(e.target.value)}
+
+                            />
+                            <div className="flex py-2 px-1 justify-between">
+                                <Checkbox
+                                    classNames={{
+                                        label: "text-small",
+                                    }}
+                                >
+                                    Remember me
+                                </Checkbox>
+                                <Link color="primary" href="#" size="sm">
+                                    Forgot password?
+                                </Link>
+                            </div>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="danger" variant="flat" onPress={onClose}>
+                                Close
+                            </Button>
+                            <Button color="primary" type="submit" onPress={handleLogin}>
+                                Sign in
+                            </Button>
+                        </ModalFooter>
+                    </>
+                )}
+            </ModalContent>
+        </Modal>
     );
 }

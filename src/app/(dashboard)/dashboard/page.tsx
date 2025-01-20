@@ -1,10 +1,10 @@
-import SkillsChart from "@/src/components/dashboard/SkillsChart";
+import SkillsChart from "@/src/app/(dashboard)/__components/SkillsChart";
 import { getSkillsAnalysis } from "@/src/services/skills.services";
+import ProjectsAnalysis from "../__components/ProjectsAnalysis";
 
 
 const DashboardPage = async () => {
   const skillsAnalysisData = await getSkillsAnalysis();
-  console.log(skillsAnalysisData);
 
   return (
     <div
@@ -29,7 +29,8 @@ const DashboardPage = async () => {
           </div>
           <div className=" flex flex-col gap-5 rounded-md h-full">
             <div className="flex gap-5 ">
-              <div className="w-full bg-white h-[300px] rounded-md" />
+              <ProjectsAnalysis />
+
               <div className="w-full bg-white/50 h-[300px] rounded-md" />
               <div className="w-full bg-white h-[300px] rounded-md" />
             </div>
