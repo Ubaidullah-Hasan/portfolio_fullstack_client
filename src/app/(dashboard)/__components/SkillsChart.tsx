@@ -1,6 +1,5 @@
 "use client"
 import React from 'react';
-
 import dynamic from 'next/dynamic';
 
 const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
@@ -19,10 +18,15 @@ const SkillsChart = ({ data }: { data: IProps[]}) => {
         }],
         options: {
             chart: {
-                height: 350,
+                height: 360,
                 type: 'area',
                 zoom: {
                     enabled: false
+                },
+            },
+            grid: {
+                padding: {
+                    bottom: 0, // Removes the extra space at the bottom
                 },
             },
             markers: {
@@ -53,7 +57,8 @@ const SkillsChart = ({ data }: { data: IProps[]}) => {
             },
             title: {
                 text: 'Analysis Of My Skills',
-                align: 'left'
+                align: 'left',
+                
             },
         },
 
@@ -61,9 +66,9 @@ const SkillsChart = ({ data }: { data: IProps[]}) => {
     });
 
     return (
-        <div>
-            <div id="chart">
-                <ReactApexChart height={350} options={state.options} series={state.series} type="area" />
+        <div className='p-5'>
+            <div>
+                <ReactApexChart height={400} options={state.options} series={state.series} type="area" />
             </div>
         </div>
     );

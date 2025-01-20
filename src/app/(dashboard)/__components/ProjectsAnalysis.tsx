@@ -1,5 +1,4 @@
 import React from 'react';
-import { SiApostrophe } from "react-icons/si";
 import { TbBulbFilled } from "react-icons/tb";
 import { FaCircleCheck } from "react-icons/fa6";
 import { FaCircleDown } from "react-icons/fa6";
