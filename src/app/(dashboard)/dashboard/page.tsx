@@ -2,6 +2,7 @@ import SkillsChart from "@/src/app/(dashboard)/__components/SkillsChart";
 import { getSkillsAnalysis } from "@/src/services/skills.services";
 import ProjectsAnalysis from "../__components/ProjectsAnalysis";
 import BlogAnalysis from "../__components/BlogAnalysis";
+import EducationAnalysis from "../__components/CalanderDash";
 
 
 const DashboardPage = async () => {
@@ -32,7 +33,7 @@ const DashboardPage = async () => {
             <div className="flex gap-5 ">
               <ProjectsAnalysis />
               <BlogAnalysis />
-              <div className="w-full bg-white h-[200px] rounded-md" />
+              <EducationAnalysis/>
             </div>
 
             {/* skills graph */}
